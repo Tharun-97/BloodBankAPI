@@ -1,0 +1,70 @@
+DAO:
+/* ========================================================================== */
+	public Region selectRegionById(Region region) throws SQLException, IOException {
+		try {
+			String query = "select region from region where region_id=?";
+			PreparedStatement selectregion = connectionPooling.connect().prepareStatement(query);
+			selectregion.setInt(1, region.getId());
+			ResultSet resultSet = selectregion.executeQuery();
+			while (resultSet.next()) {
+				region.setRegion(resultSet.getString("region"));
+				return region;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+		return region;
+	}
+
+	public Branch selectBranchById(Branch branch) {
+
+		try {
+			String query = "select branch from branch where branch_id=?";
+			PreparedStatement selectbranch = connectionPooling.connect().prepareStatement(query);
+			selectbranch.setInt(1, branch.getId());
+			ResultSet resultSet = selectbranch.executeQuery();
+			while (resultSet.next()) {
+				branch.setBranchLocation(resultSet.getString("branch"));
+				return branch;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+		return branch;
+	}
+	/* ========================================================================== */
+
+
+
+
+
+
+
+
+CONTROLLER:
+
+/*==========================================================================*/
+	@GetMapping("/selectRegionbyID/{id}")
+	public ResponseEntity<?> selectregion(@PathVariable("id") int id) throws SQLException, IOException {
+
+		String c = dao.selectRegion(id);
+
+		if (c != null) {
+			return new ResponseEntity<>(c, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping("/selectBranchbyID/{id}")
+	public ResponseEntity<?> selectbranch(@PathVariable("id") int id) throws SQLException, IOException {
+
+		String c = dao.selectBranchLocation(id);
+
+		if (c != null) {
+			return new ResponseEntity<>(c, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	/*==========================================================================*/
