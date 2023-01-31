@@ -18,21 +18,21 @@ import com.bloodbank.model.Region;
 import com.bloodbank.model.Response;
 
 @RestController
-@RequestMapping(value = "/Regions")
+@RequestMapping(value = "/regions")
 public class RegionsController {
 
 	@Autowired
 	RegionDAO region;
 	Logger logger = LogManager.getLogger("BloodBank");
 
-	@GetMapping("/ListOfRegions")
+	@GetMapping("/listOfRegions")
 	public Response getRegion() {
 		logger.info("List of Regions API");
 		Response response = new Response();
 		try {
 			List<Region> regions = region.getRegion();
-			if (regions != null) {
-				logger.info("Region List Details Found"+regions);
+			if (regions != null && regions.size() != 0) {
+				logger.info("Region List Details Found" + regions);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region List Details found");
 				response.setResponseBody(new JSONObject().put("Region List", regions));
@@ -59,8 +59,8 @@ public class RegionsController {
 		try {
 
 			String selectRegion = region.selectRegion(id);
-			if (region != null) {
-				logger.info("Region Details Found"+selectRegion);
+			if (region != null && selectRegion.length() != 0) {
+				logger.info("Region Details Found" + selectRegion);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region Details found");
 				response.setResponseBody(new JSONObject().put("Region", selectRegion));

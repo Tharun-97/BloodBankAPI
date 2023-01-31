@@ -20,7 +20,7 @@ import com.bloodbank.model.Branch;
 import com.bloodbank.model.Response;
 
 @RestController
-@RequestMapping(value = "/Branches")
+@RequestMapping(value = "/branches")
 public class BranchController {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class BranchController {
 		try {
 			List<Branch> branches = branch.getBranchByRegionID(id);
 
-			if (branches != null) {
+			if (branches != null && branches.size() !=0) {
 				logger.info("Branch List Details Found "+branches);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch List Details found");
@@ -65,7 +65,7 @@ public class BranchController {
 
 		try {
 			String selectBranch = branch.selectBranchLocation(id);
-			if (branch != null) {
+			if (branch != null && selectBranch.length() !=0) {
 				logger.info("Branch Details Found "+selectBranch);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch Details found");

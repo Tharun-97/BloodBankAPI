@@ -21,7 +21,7 @@ public class BranchDAO {
 
 	public List<Branch> getBranchByRegionID(int id) {
 
-		String branchlist = "select branch_id,branch from branch where region_id=?";
+		String branchlist = "exec getbranchbyregionid @region_id=?";
 		PreparedStatement getbranch;
 		List<Branch> branch = new ArrayList<Branch>();
 		try {
@@ -43,7 +43,7 @@ public class BranchDAO {
 
 	public String selectBranchLocation(int id) {
 
-		String query = "select branch from branch where branch_id=?";
+		String query = "exec selectbranchlocation @branch_id=?";
 		PreparedStatement selectbranch;
 		String branch = "";
 		try {

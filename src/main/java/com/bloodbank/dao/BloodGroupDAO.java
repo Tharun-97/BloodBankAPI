@@ -22,7 +22,7 @@ public class BloodGroupDAO {
 	ConnectionPooling connectionPooling;
 
 	public List<BloodGroup> getBloodGroup() {
-		String bloodgroups = "select * from bloodgroup";
+		String bloodgroups = "exec selectallbloodgroups";
 		PreparedStatement getbloodgroup;
 		List<BloodGroup> bloodgroup = new ArrayList<BloodGroup>();
 		try {
@@ -41,7 +41,7 @@ public class BloodGroupDAO {
 	}
 
 	public String getBloodUnits(int branchid, int bloodgroup) {
-		String query = "select unitsavailable from bloodunits WHERE branch_id=? and bloodgroup_id=?";
+		String query = "exec getbloodunits @branch_id=?,@bloodgroup_id=?";
 		PreparedStatement getUnits;
 		String bloodunit = "";
 		try {
@@ -64,7 +64,7 @@ public class BloodGroupDAO {
 	}
 
 	public List<BloodUnits> getAvailableBloodUnits(int bloodgroupid) {
-		String AvailableBloodUnits = "exec getAvailableBloodUnits @bloodgroup_id = ?;";
+		String AvailableBloodUnits = "exec getAvailableBloodUnits @bloodgroup_id = ?";
 		PreparedStatement getunits;
 		List<BloodUnits> bloodunits = new ArrayList<BloodUnits>();
 		try {
