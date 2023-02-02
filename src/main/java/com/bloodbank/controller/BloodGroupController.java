@@ -39,7 +39,7 @@ public class BloodGroupController {
 				logger.info("BloodGroup List Details Found " + bloodGroup);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("BloodGroup List Details found");
-				response.setResponseBody(new JSONObject().put("BloodGroup List:  ", bloodGroup));
+				response.setResponseBody(new JSONObject().put("ResponseList", bloodGroup));
 				return response;
 			} else {
 				logger.error("BloodGroup List Not Found");
@@ -71,7 +71,7 @@ public class BloodGroupController {
 				logger.info("Available Units of BloodGroup Details Found " + bloodUnits);
 				response.setHttpStatus(HttpStatus.OK);
 				response.setMessage("Available Units of BloodGroup Details found");
-				response.setResponseBody(new JSONObject().put("Available Units of BloodGroup: ", bloodUnits));
+				response.setResponseBody(new JSONObject().put("Response", bloodUnits));
 				return response;
 			} else {
 				logger.error("Available Units of BloodGroup Not Found");
@@ -108,7 +108,7 @@ public class BloodGroupController {
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage(" Available Units in All Branches Details found");
 				response.setResponseBody(
-						new JSONObject().put(" Available Units in All Branches: ", availableBloodUnits));
+						new JSONObject().put("Response", availableBloodUnits));
 				return response;
 			} else {
 				logger.error(" Available Units in All Branches Not Found");

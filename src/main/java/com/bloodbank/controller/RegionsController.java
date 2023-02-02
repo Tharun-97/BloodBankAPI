@@ -35,7 +35,7 @@ public class RegionsController {
 				logger.info("Region List Details Found" + regions);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region List Details found");
-				response.setResponseBody(new JSONObject().put("Region List", regions));
+				response.setResponseBody(new JSONObject().put("ResponseList", regions));
 				return response;
 			} else {
 				logger.error("Region List Not Found");
@@ -63,7 +63,7 @@ public class RegionsController {
 				logger.info("Region Details Found" + selectRegion);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region Details found");
-				response.setResponseBody(new JSONObject().put("Region", selectRegion));
+				response.setResponseBody(new JSONObject().put("Response",selectRegion));
 				return response;
 			} else {
 				logger.error("Region Not Found");

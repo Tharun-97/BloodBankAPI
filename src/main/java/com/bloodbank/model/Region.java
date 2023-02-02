@@ -11,7 +11,6 @@ public class Region {
 
 		this.id = id;
 		this.region = region;
-
 	}
 
 	public int getId() {

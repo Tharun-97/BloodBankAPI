@@ -39,7 +39,7 @@ public class BranchController {
 				logger.info("Branch List Details Found "+branches);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch List Details found");
-				response.setResponseBody(new JSONObject().put("Branch List: ", branches));
+				response.setResponseBody(new JSONObject().put("ResponseList", branches));
 				return response;
 			} else {
 				logger.error("Branch List Not Found");
@@ -69,7 +69,7 @@ public class BranchController {
 				logger.info("Branch Details Found "+selectBranch);
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch Details found");
-				response.setResponseBody(new JSONObject().put("BranchLocation", selectBranch));
+				response.setResponseBody(new JSONObject().put("Response", selectBranch));
 				return response;
 			} else {
 				logger.error("Branch Not Found");
