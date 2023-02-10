@@ -40,13 +40,13 @@ public class BloodGroupDAO {
 		return bloodgroup;
 	}
 
-	public String getBloodUnits(int branchid, int bloodgroup) {
-		String query = "exec getbloodunits @branch_id=?,@bloodgroup_id=?";
+	public String getBloodUnits(String branch, int bloodgroup) {
+		String query = "exec getbloodunits @branch=?,@bloodgroup_id=?";
 		PreparedStatement getUnits;
 		String bloodunit = "";
 		try {
 			getUnits = connectionPooling.connect().prepareStatement(query);
-			getUnits.setInt(1, branchid);
+			getUnits.setString(1, branch);
 			getUnits.setInt(2, bloodgroup);
 			
 			ResultSet data = getUnits.executeQuery();

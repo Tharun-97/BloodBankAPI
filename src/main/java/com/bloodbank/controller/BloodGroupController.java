@@ -56,17 +56,16 @@ public class BloodGroupController {
 		}
 	}
 
-	@GetMapping(value = "/getAvailableUnits/{branchid}/{bloodgroupid}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Response getBloodUnits(@PathVariable("branchid") String input1,
-			@PathVariable("bloodgroupid") String input2) {
+	@GetMapping(value = "/getAvailableUnits/{branch}/{bloodgroupid}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public Response getBloodUnits(@PathVariable("branch") String branch,@PathVariable("bloodgroupid") String input2) {
 
 		logger.info("Get Available Units of BloodGroup API");
 		Response response = new Response();
 
 		try {
-			int branchid = Integer.parseInt(input1);
+			
 			int bloodgroupid = Integer.parseInt(input2);
-			String bloodUnits = bloodgroup.getBloodUnits(branchid, bloodgroupid);
+			String bloodUnits = bloodgroup.getBloodUnits(branch, bloodgroupid);
 			if (bloodUnits != null && bloodUnits.length() != 0) {
 				logger.info("Available Units of BloodGroup Details Found " + bloodUnits);
 				response.setHttpStatus(HttpStatus.OK);
@@ -108,7 +107,7 @@ public class BloodGroupController {
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage(" Available Units in All Branches Details found");
 				response.setResponseBody(
-						new JSONObject().put("Response", availableBloodUnits));
+						new JSONObject().put("ResponseList", availableBloodUnits));
 				return response;
 			} else {
 				logger.error(" Available Units in All Branches Not Found");
