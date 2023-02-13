@@ -36,7 +36,7 @@ public class BranchController {
 			List<Branch> branches = branch.getBranchByRegionID(id);
 
 			if (branches != null && branches.size() !=0) {
-				logger.info("Branch List Details Found "+branches);
+				logger.info("Branch List Details Found "+branches.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch List Details found");
 				response.setResponseBody(new JSONObject().put("ResponseList", branches));
@@ -66,7 +66,7 @@ public class BranchController {
 		try {
 			String selectBranch = branch.selectBranchLocation(id);
 			if (branch != null && selectBranch.length() !=0) {
-				logger.info("Branch Details Found "+selectBranch);
+				logger.info("Branch Details Found "+selectBranch.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Branch Details found");
 				response.setResponseBody(new JSONObject().put("Response", selectBranch));

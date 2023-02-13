@@ -32,7 +32,7 @@ public class RegionsController {
 		try {
 			List<Region> regions = region.getRegion();
 			if (regions != null && regions.size() != 0) {
-				logger.info("Region List Details Found" + regions);
+				logger.info("Region List Details Found" + regions.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region List Details found");
 				response.setResponseBody(new JSONObject().put("ResponseList", regions));
@@ -60,7 +60,7 @@ public class RegionsController {
 
 			String selectRegion = region.selectRegion(id);
 			if (region != null && selectRegion.length() != 0) {
-				logger.info("Region Details Found" + selectRegion);
+				logger.info("Region Details Found" + selectRegion.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("Region Details found");
 				response.setResponseBody(new JSONObject().put("Response",selectRegion));

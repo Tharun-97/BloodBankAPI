@@ -36,7 +36,7 @@ public class BloodGroupController {
 		try {
 			List<BloodGroup> bloodGroup = bloodgroup.getBloodGroup();
 			if (bloodGroup != null && bloodGroup.size() != 0) {
-				logger.info("BloodGroup List Details Found " + bloodGroup);
+				logger.info("BloodGroup List Details Found " + bloodGroup.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage("BloodGroup List Details found");
 				response.setResponseBody(new JSONObject().put("ResponseList", bloodGroup));
@@ -67,7 +67,7 @@ public class BloodGroupController {
 			int bloodgroupid = Integer.parseInt(input2);
 			String bloodUnits = bloodgroup.getBloodUnits(branch, bloodgroupid);
 			if (bloodUnits != null && bloodUnits.length() != 0) {
-				logger.info("Available Units of BloodGroup Details Found " + bloodUnits);
+				logger.info("Available Units of BloodGroup Details Found " + bloodUnits.toString());
 				response.setHttpStatus(HttpStatus.OK);
 				response.setMessage("Available Units of BloodGroup Details found");
 				response.setResponseBody(new JSONObject().put("Response", bloodUnits));
@@ -103,7 +103,7 @@ public class BloodGroupController {
 			List<BloodUnits> availableBloodUnits = bloodgroup.getAvailableBloodUnits(id);
 
 			if (availableBloodUnits != null && availableBloodUnits.size() != 0) {
-				logger.info(" Available Units in All Branches Details Found " + availableBloodUnits);
+				logger.info(" Available Units in All Branches Details Found " + availableBloodUnits.toString());
 				response.setHttpStatus(HttpStatus.FOUND);
 				response.setMessage(" Available Units in All Branches Details found");
 				response.setResponseBody(
